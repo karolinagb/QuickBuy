@@ -6,7 +6,7 @@ namespace QuickBuy.Dominio.Entities
     {
         public int Id { get; set; }
         public string Email { get; set; }
-        public string Senha { get; set; }
+        public string Password { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
 
@@ -15,7 +15,15 @@ namespace QuickBuy.Dominio.Entities
 
         public override void Validate()
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrEmpty(Email))
+            {
+                AddValidationMessage("Email not informed");
+            }
+
+            if (string.IsNullOrEmpty(Password))
+            {
+                AddValidationMessage("Password not informed");
+            }
         }
     }
 }

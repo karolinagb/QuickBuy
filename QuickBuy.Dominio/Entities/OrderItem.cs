@@ -8,7 +8,16 @@
 
         public override void Validate()
         {
-            throw new System.NotImplementedException();
+            //Id de Produto nao pode ser vazio
+            if(ProductId == 0)
+            {
+                AddValidationMessage("Product reference not found");
+            }
+
+            if (Quantity == 0)
+            {
+                AddValidationMessage("Quantity not informed");
+            }
         }
     }
 }

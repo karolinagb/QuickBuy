@@ -44,7 +44,12 @@ namespace QuickBuy.Dominio.Entities
             //CEP não pode ser vazio:
             if (string.IsNullOrEmpty(CEP))
             {
-                AddValidationMessage("CEP CANNOT BE EMPTY");
+                AddValidationMessage("CEP can not be empty");
+            }
+
+            if(PaymentFormId == 0)
+            {
+                AddValidationMessage("Payment form not found");
             }
         }
     }

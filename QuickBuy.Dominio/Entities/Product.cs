@@ -13,7 +13,15 @@ namespace QuickBuy.Dominio.Entities
 
         public override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(Name))
+            {
+                AddValidationMessage("Product Name not found");
+            }
+
+            if (string.IsNullOrEmpty(Description))
+            {
+                AddValidationMessage("Description not informed");
+            }
         }
     }
 }
