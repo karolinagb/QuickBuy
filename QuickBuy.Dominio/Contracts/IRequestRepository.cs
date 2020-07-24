@@ -2,7 +2,7 @@
 
 namespace QuickBuy.Dominio.Contracts
 {
-    interface IRequestRepository : IBaseRepository<Request>
+    public interface IRequestRepository : IBaseRepository<Request>
     {
     }
 }
