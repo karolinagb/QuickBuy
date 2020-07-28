@@ -4,7 +4,7 @@ using QuickBuy.Dominio.Entities.ValuableObject;
 
 namespace QuickBuy.Repositorio.Context
 {
-    class QuickBuyContext : DbContext
+    public class QuickBuyContext : DbContext
     {
         public DbSet<User> User { get; set; }
 
@@ -16,5 +16,9 @@ namespace QuickBuy.Repositorio.Context
 
         /*O PaymentForm é um objeto de valor, mas precisamos dele na base de dados:*/
         public DbSet<PaymentForm> PaymentForm { get; set; }
+
+        public QuickBuyContext(DbContextOptions options) : base(options)
+        {
+        }
     }
 }
