@@ -9,7 +9,17 @@ namespace QuickBuy.Repositorio.Config
     {
         public void Configure(EntityTypeBuilder<PaymentForm> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(paymentForm => paymentForm.Id);
+
+            builder
+                .Property(paymentForm => paymentForm.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            builder
+                .Property(paymentForm => paymentForm.Description)
+                .IsRequired()
+                .HasMaxLength(100);
         }
     }
 }

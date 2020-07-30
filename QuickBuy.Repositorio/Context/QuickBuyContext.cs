@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QuickBuy.Dominio.Entities;
 using QuickBuy.Dominio.Entities.ValuableObject;
+using QuickBuy.Repositorio.Config;
 
 namespace QuickBuy.Repositorio.Context
 {
@@ -19,6 +20,17 @@ namespace QuickBuy.Repositorio.Context
 
         public QuickBuyContext(DbContextOptions options) : base(options)
         {
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Classes de mapeamento aqui:
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new RequestConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentFormConfiguration());
+            modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
