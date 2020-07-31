@@ -43,7 +43,8 @@ namespace QuickBuy.Repositorio.Config
                 .Property(request => request.AdressNumber)
                 .IsRequired();
 
-            //builder.HasOne(request => request.User);
+            /*Não há necessidade de configurar no lado pai também, mas se você quiser é assim que faz:*/
+            builder.HasOne(request => request.User);
 
             builder.HasOne(request => request.PaymentForm);
         }

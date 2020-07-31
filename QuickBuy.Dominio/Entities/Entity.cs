@@ -9,8 +9,8 @@ namespace QuickBuy.Dominio.Entities
     public abstract class Entity
     {
         //Nessa classe mãe nós vamos definir o que as outras entidades devem seguir
-
-        public List<string> _validationMessages { get; set; }
+        //_validationMessages não estará disponível para suas classes filhas
+        private List<string> _validationMessages { get; set; }
 
         //Private para que ele não possa ser acessado de fora, só poderá ser adicionada mensagem pelo método AddMessage
         //Quando é private posso colocar tudo em minúsculo

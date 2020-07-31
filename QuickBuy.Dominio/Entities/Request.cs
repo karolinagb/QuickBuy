@@ -12,7 +12,15 @@ namespace QuickBuy.Dominio.Entities
     {
         public int Id { get; set; }
         public DateTime RequestDate { get; set; }
+
+        /*Para realizar o mapeamento por convenção tenho que colocar a propriedade user dentro de pedido. Lembrando de também
+         acrescentar o nome virtual:*/
+        public virtual User User { get; set; }
         public int UserId { get; set; }
+        /*No caso do mapeamento por convenção, no lado 1 (1-n) tenho que por a propriedade com o mesmo nome da entidade (user) e tenho
+         que ter um id com o primeiro nome sendo igual ao da propriedade mapeada e o segundo nome deve ser a chave primária que tem
+        na classe User.*/
+
         public DateTime ExpectedDeliveryDate { get; set; }
         public string CEP { get; set; }
         public string State { get; set; }

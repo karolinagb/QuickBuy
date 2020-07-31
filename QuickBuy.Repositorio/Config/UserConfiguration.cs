@@ -39,7 +39,11 @@ namespace QuickBuy.Repositorio.Config
                 .HasMaxLength(50);
 
             //Os pedidos é uma collection e representa um relacionamento entre o usuario e a entidade pedido (que tb é mapeada no dbset).
-            //builder.Property(usuario => usuario.Requests)
+            //Um usuário pode ter 0 ou n pedidos. Pedido poder ter 1 e somente 1 usuario. Cardinalidade 1 - n
+            //HasMany = tem muitos
+            builder
+                .HasMany(usuario => usuario.Requests)
+                .WithOne(requests => requests.User);
         }
     }
 }
