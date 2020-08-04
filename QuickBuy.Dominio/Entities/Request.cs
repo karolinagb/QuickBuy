@@ -32,10 +32,10 @@ namespace QuickBuy.Dominio.Entities
         public int PaymentFormId { get; set; }
 
         //Forma de pagamento:
-        public PaymentForm PaymentForm { get; set; }
+        public virtual PaymentForm PaymentForm { get; set; }
 
         //Um pedido dever ter 1 ou mais items de pedido
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
 
         public override void Validate()
         {

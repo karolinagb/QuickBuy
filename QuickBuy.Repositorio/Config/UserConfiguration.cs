@@ -30,8 +30,8 @@ namespace QuickBuy.Repositorio.Config
             builder
                 .Property(usuario => usuario.Name)
                 .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnType("varchar");
+                .HasMaxLength(50);
+                //.HasColumnType("varchar");
 
             builder
                 .Property(usuario => usuario.Surname)
