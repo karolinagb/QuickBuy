@@ -12,6 +12,11 @@ namespace QuickBuy.Repositorio.Repositories
         //Referência ao DbContext a fim de que os repositórios possam ter acesso ao banco
         protected readonly QuickBuyContext QuickBuyContext;
 
+        public BaseRepository()
+        {
+
+        }
+
         public BaseRepository(QuickBuyContext quickBuyContext)
         {
             QuickBuyContext = quickBuyContext;
@@ -20,6 +25,7 @@ namespace QuickBuy.Repositorio.Repositories
         public void Add(TEntity entity)
         {
             QuickBuyContext.Set<TEntity>().Add(entity);
+            QuickBuyContext.SaveChanges();
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -29,17 +35,19 @@ namespace QuickBuy.Repositorio.Repositories
 
         public TEntity GetById(int id)
         {
-            throw new NotImplementedException();
+            return QuickBuyContext.Set<TEntity>().Find(id);
         }
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            QuickBuyContext.Set<TEntity>().Remove(entity);
+            QuickBuyContext.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            QuickBuyContext.Set<TEntity>().Update(entity);
+            QuickBuyContext.SaveChanges();
         }
 
         public void Dispose()
