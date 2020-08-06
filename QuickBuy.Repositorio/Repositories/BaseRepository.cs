@@ -1,25 +1,30 @@
 ﻿using QuickBuy.Dominio.Contracts;
+using QuickBuy.Repositorio.Context;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuickBuy.Repositorio.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
-        public BaseRepository()
-        {
+        //Referência ao DbContext a fim de que os repositórios possam ter acesso ao banco
+        protected readonly QuickBuyContext QuickBuyContext;
 
+        public BaseRepository(QuickBuyContext quickBuyContext)
+        {
+            QuickBuyContext = quickBuyContext;
         }
 
         public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            QuickBuyContext.Set<TEntity>().Add(entity);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+            return QuickBuyContext.Set<TEntity>().ToList();
         }
 
         public TEntity GetById(int id)
@@ -39,7 +44,7 @@ namespace QuickBuy.Repositorio.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            QuickBuyContext.Dispose();
         }
     }
 }
