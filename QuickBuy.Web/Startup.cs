@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuickBuy.Dominio.Contracts;
 using QuickBuy.Repositorio.Context;
 
 namespace QuickBuy.Web
@@ -39,6 +40,7 @@ namespace QuickBuy.Web
                                                         .UseMySql(connectionString, 
                                                         m => m.MigrationsAssembly("QuickBuy.Repositorio"))); //Definindo o projeto que contém o context
             //usada expressão lamda onde a variável de entrada option vai utilizar o mysql
+            services.AddScoped<IProductRepository, IProductRepository>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
