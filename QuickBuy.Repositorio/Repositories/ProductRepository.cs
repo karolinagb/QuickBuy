@@ -4,7 +4,7 @@ using QuickBuy.Repositorio.Context;
 
 namespace QuickBuy.Repositorio.Repositories
 {
-    class ProductRepository : BaseRepository<Product>, IProductRepository
+    public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         public ProductRepository(QuickBuyContext quickBuyContext) : base(quickBuyContext)
         {
