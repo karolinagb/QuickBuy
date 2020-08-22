@@ -2,8 +2,8 @@ import { Component } from "@angular/core"
 
 //Utilizando um Decorator que vai configurar o ProductComponent
 @Component({
-  selector: "",
-  template: "<html><body>{{ getName() }}}</body></html>"
+  selector: "app-product",
+  template: "<html><body>{{ getName() }}</body></html",
 })
 
 //export é como o public no c#
