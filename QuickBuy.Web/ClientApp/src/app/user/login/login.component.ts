@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { User } from "../../model/user";
 
 //Para o typescript entender a classe como component
 @Component({
@@ -14,4 +15,15 @@ import { Component } from "@angular/core";
 })
 export class LoginComponent {
 
+  public user = new User();
+  
+  //Toda vez que LoginComponent é instanciado ele recebe a instância de User
+  constructor() {
+    this.user = new User();
+  }
+
+  logIn() {
+    if (this.user.email == "karol@teste.com" && this.user.password == "abc123") {
+    }
+  }
 }

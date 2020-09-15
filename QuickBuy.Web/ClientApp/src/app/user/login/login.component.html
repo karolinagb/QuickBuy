@@ -8,14 +8,37 @@
     <label for="inputEmail" class="sr-only">Email</label>
     <input type="email" id="inputEmail"
            name="email" placeholder="Informe o seu Email"
-           class="form-control mb-2"/>
+           class="form-control mb-2"
+           [(ngModel)]="user.email"
+           #email = "ngModel"
+           email
+           required/>
+
+    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+        Email is mandatory!
+      </div>
+      <div *ngIf="email.errors.email">
+        Email is not in the correct format!
+      </div>
+    </div>
 
     <label for="inputSenha" class="sr-only">Password</label>
     <input type="password" id="inputSenha"
            name="senha" placeholder="Digite sua senha"
-           class="form-control mb-2"/>
+           class="form-control mb-2"
+           [(ngModel)]="user.password"
+           #password = "ngModel"
+           required/>
 
-    <button class="btn btn-primary btn-block" type="submit">Log in</button>
+    <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+      <div *ngIf="password.errors.required">
+        Password was not informed!
+      </div>
+    </div>
 
+    <button class="btn btn-primary btn-block" type="submit" (click)="logIn()">Log in</button>
+
+    <img src="../../../assets/img/quick-logo.jpg"/>
   </form>
 </div>
