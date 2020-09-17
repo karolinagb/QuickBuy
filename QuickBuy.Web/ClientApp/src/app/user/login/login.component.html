@@ -9,12 +9,16 @@
     <input type="email" id="inputEmail"
            name="email" placeholder="Informe o seu Email"
            class="form-control mb-2"
-           [(ngModel)]="user.email"
            #email = "ngModel"
+           [ngClass]="{
+            'is-invalid': email.invalid && (email.dirty || email.touched),
+            'is-valid': email.valid && (email.dirty || email.touched)
+           }"
+           [(ngModel)]="user.email"
            email
            required/>
 
-    <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
       <div *ngIf="email.errors.required">
         Email is mandatory!
       </div>
@@ -27,11 +31,15 @@
     <input type="password" id="inputSenha"
            name="senha" placeholder="Digite sua senha"
            class="form-control mb-2"
-           [(ngModel)]="user.password"
            #password = "ngModel"
+           [ngClass]="{
+            'is-invalid': password.invalid && (password.dirty || password.touched),
+            'is-valid': password.valid && (password.dirty || password.touched)
+           }"
+           [(ngModel)]="user.password"
            required/>
 
-    <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+    <div class="invalid-feedback mb-2" *ngIf="password.invalid && (password.dirty || password.touched)">
       <div *ngIf="password.errors.required">
         Password was not informed!
       </div>
