@@ -11,9 +11,15 @@ export class GuardRoutes implements CanActivate{
   }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean{
-      //this.router.navigate(['/entrar']) //navega para a pagina de autenticação caso o user tente navegar sem estar autenticado
+
+      var autenticated = localStorage.getItem("user-autenticated");
+
+      if (autenticated == "1") {
+        return true;
+      }
+      this.router.navigate(['/login'], { queryParams: {returnUrl: state.url} }); //navega para a pagina de autenticação caso o user tente navegar sem estar autenticado
       //se usuario autenticado
-      return true;
+      return false;
     }
 
 }
